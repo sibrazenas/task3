@@ -12,3 +12,20 @@ turėti bent minimalų stilių ir būti responsive;
 -------------------------------------------------------------------------- */
 
 const ENDPOINT = 'https://api.github.com/users';
+const button = document.getElementById('btn')
+const output =  document.getElementById('output')
+let userCard = ''
+
+
+button.addEventListener('click',() => {
+fetch(ENDPOINT)
+  .then((response) => response.json())
+  .then((data) => data.forEach((item) => {
+    userCard += `
+    <div> ${item.login} </div>
+    <img src=${item.avatar_url}alt="Girl in a jacket" width="130" height="150">
+    `    
+    output.innerHTML = userCard
+  }));
+
+})
